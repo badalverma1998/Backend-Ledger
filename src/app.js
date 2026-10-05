@@ -1,0 +1,31 @@
+const express = require("express")
+const cookieParser = require("cookie-parser")
+
+
+
+const app = express()
+
+
+//middleware
+app.use(express.json());
+app.use(cookieParser())
+
+
+
+
+/**
+ * - Routes Required 
+ */
+const authRouter = require("./routes/auth.routes")
+const accountRouter = require("./routes/account.router")
+const transactionRouter = require("./routes/transaction.routes")
+
+/**
+ * - Use Routes
+ */
+app.use("/api/auth",authRouter)
+app.use("/api/accounts",accountRouter)
+app.use("/api/transaction",transactionRouter)
+
+
+module.exports = app
